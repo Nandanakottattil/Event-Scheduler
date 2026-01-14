@@ -1,0 +1,53 @@
+schedule_events:
+  description: >
+    Analyze all event details including duration, priority, dependencies, and preferred time slots.
+    Generate an optimized and conflict-free event schedule.
+  expected_output: >
+    A complete timetable with assigned time slots for all events.
+  agent: event_scheduler
+  output_file: output/event_schedule.md
+
+allocate_venues:
+  description: >
+    Assign suitable venues to each scheduled event based on capacity, facilities, and availability.
+    Ensure there are no venue conflicts or double bookings.
+  expected_output: >
+    A venue allocation plan mapping each event to an appropriate venue.
+  agent: venue_manager
+  output_file: output/venue_allocation.md
+
+assign_volunteers:
+  description: >
+    Assign volunteers to events based on skills, availability, and workload balance.
+    Avoid overlapping assignments and ensure fair distribution of tasks.
+  expected_output: >
+    A volunteer assignment list for all events.
+  agent: volunteer_assigner
+  output_file: output/volunteer_assignments.md
+
+resolve_conflicts:
+  description: >
+    Identify conflicts across event schedules, venue allocations, and volunteer assignments.
+    Propose and apply corrective actions to resolve detected issues.
+  expected_output: >
+    A conflict-free and validated event plan.
+  agent: conflict_resolver
+  output_file: output/conflict_resolution.md
+
+adaptive_replanning:
+  description: >
+    Handle real-time disruptions such as venue unavailability or volunteer withdrawal.
+    Update only the affected parts of the schedule while maintaining overall stability.
+  expected_output: >
+    An updated event plan reflecting real-time changes.
+  agent: adaptive_replanner
+  output_file: output/replanned_schedule.md
+
+explain_decisions:
+  description: >
+    Generate clear, human-readable explanations for scheduling, venue allocation,
+    volunteer assignments, and conflict resolution decisions.
+  expected_output: >
+    Natural language explanations justifying key system decisions.
+  agent: decision_explainer
+  output_file: output/decision_explanations.md
