@@ -1,53 +1,56 @@
 schedule_events:
   description: >
-    Analyze all event details including duration, priority, dependencies, and preferred time slots.
-    Generate an optimized and conflict-free event schedule.
+    Using the provided event details: {{events}},
+    generate a conflict-free event schedule.
+    Do NOT invent new events or timings.
   expected_output: >
-    A complete timetable with assigned time slots for all events.
+    A structured schedule mapping events to time slots.
   agent: event_scheduler
   output_file: output/event_schedule.md
 
 allocate_venues:
   description: >
-    Assign suitable venues to each scheduled event based on capacity, facilities, and availability.
-    Ensure there are no venue conflicts or double bookings.
+    Assign venues from {{venues}} to the scheduled events.
+    Respect capacity, facilities, and availability.
+    Do NOT create new venues.
   expected_output: >
-    A venue allocation plan mapping each event to an appropriate venue.
+    Event-to-venue assignment.
   agent: venue_manager
-  output_file: output/venue_allocation.md
+  output_file: output/event_schedule.md
 
 assign_volunteers:
   description: >
-    Assign volunteers to events based on skills, availability, and workload balance.
-    Avoid overlapping assignments and ensure fair distribution of tasks.
+    Assign volunteers from {{volunteers}} to events.
+    Respect availability and workload.
+    Do NOT create new volunteers.
   expected_output: >
-    A volunteer assignment list for all events.
+    Volunteer-to-event assignment.
   agent: volunteer_assigner
-  output_file: output/volunteer_assignments.md
+  output_file: output/event_schedule.md
 
 resolve_conflicts:
   description: >
-    Identify conflicts across event schedules, venue allocations, and volunteer assignments.
-    Propose and apply corrective actions to resolve detected issues.
+    Identify and resolve conflicts in schedules, venues, or volunteers.
+    Use only the existing data.
   expected_output: >
-    A conflict-free and validated event plan.
+    A corrected, conflict-free plan.
   agent: conflict_resolver
-  output_file: output/conflict_resolution.md
+  output_file: output/event_schedule.md
 
 adaptive_replanning:
   description: >
-    Handle real-time disruptions such as venue unavailability or volunteer withdrawal.
-    Update only the affected parts of the schedule while maintaining overall stability.
+    If changes occur, adjust only affected assignments
+    while minimizing disruption.
   expected_output: >
-    An updated event plan reflecting real-time changes.
+    Updated schedule with explanation.
   agent: adaptive_replanner
-  output_file: output/replanned_schedule.md
+  output_file: output/event_schedule.md
 
 explain_decisions:
   description: >
-    Generate clear, human-readable explanations for scheduling, venue allocation,
-    volunteer assignments, and conflict resolution decisions.
+    Explain why each scheduling, venue, and volunteer decision was made
+    using the provided inputs.
   expected_output: >
-    Natural language explanations justifying key system decisions.
+    Human-readable explanations.
   agent: decision_explainer
-  output_file: output/decision_explanations.md
+  output_file: output/event_schedule.md

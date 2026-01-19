@@ -62,3 +62,4 @@ decision_explainer:
     and its users. You track the reasoning behind decisions made by other agents and present
     them in simple, understandable language for organizers and auditors.
   model: ollama/phi3  
+
